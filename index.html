@@ -5,8 +5,33 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Hack Glasgow - Train Departure Board</title>
   <style>
+
+#talkTimeAndPlatform {
+font-size: 30px;
+}
+
+#platform {
+text-align:right;
+}
+
+#speaker {
+font-size:25px;
+}
+
+.status {
+padding-top: 20px;
+color: lime;
+font-weight: strong;
+}
+
+.delayedStatus {
+padding-top: 20px;
+color:red;
+font-weight: strong;
+}
+
 body {
-overflow:hidden;
+//overflow:hidden;
 }
 
 /* Glitchy Text - Start */
@@ -385,7 +410,7 @@ overflow:hidden;
     }
 
     .block.full-width {
-      width: 93.4%;
+      width: 93.2%;
     }
 
     .block.half-width {
@@ -449,7 +474,7 @@ trains:
   - destination: "LLMs Under Siege: Navigating Cybersecurity in Open-Source AI"
     time: "11:00"
     platform: 1
-    status: On time
+    status: Cancelled
     calling_at: "Victor Onyenagubom"
     duration: 30
   - destination: A Dual Perspective on Cybercrime
@@ -527,7 +552,7 @@ trains:
   - destination: "Out of Service"
     time: "15:30"
     platform: 2
-    status: On time
+    status: "Exp 18:15"
     calling_at: "Set-Up"
     duration: 30
   - destination: "Phishing Kits vs Financial Institutions - History, OSINT and Automation"
@@ -539,7 +564,7 @@ trains:
   - destination: "Out of Service"
     time: "16:00"
     platform: 2
-    status: On time
+    status: "Exp 18:15"
     calling_at: "Set-Up"
     duration: 30
   - destination: "Femtech and Data Privacy: What's at Stake?"
@@ -551,7 +576,7 @@ trains:
   - destination: "Out of Service"
     time: "16:30"
     platform: 2
-    status: On time
+    status: "Exp 18:15"
     calling_at: "Set-Up"
     duration: 30
   - destination: "Geopolitics, Climate Change & Cyber: Why Nation States Will Super Charge Espionage and Cyber Attacks"
@@ -563,7 +588,7 @@ trains:
   - destination: "Out of Service"
     time: "17:00"
     platform: 2
-    status: On time
+    status: "Exp 18:15"
     calling_at: "Set-Up"
     duration: 60
   - destination: "Closing Remarks"
@@ -597,7 +622,7 @@ trains:
         depTime.setHours(hours, minutes, 0, 0);
         const diffMinutes = (now - depTime) / 60000;
         if (diffMinutes > dep.duration && depTime < now) return;
-        const effectiveStatus = now >= depTime ? 'Arrived' : dep.status;
+        const effectiveStatus = now >= depTime && dep.status != "Exp 18:15" && dep.status != "Cancelled" ? 'Arrived' : dep.status;
 
         const block = document.createElement('div');
         block.className = 'block';
@@ -609,12 +634,17 @@ trains:
         }
 
         block.innerHTML = `
-          <div><strong>Time:</strong> ${dep.time}</div>
-          <div><strong>Talk:</strong> ${dep.destination}</div>
-          <div><strong>Platform:</strong> ${dep.platform}</div>
-          <div><strong>Speaker:</strong> ${dep.calling_at}</div>
+          <div id="talkTimeAndPlatform"><table width="100%"><tr><td>${dep.time}</td><td id="platform">Platform ${dep.platform}</td></tr></table></div>
+          <div id="speaker">${dep.calling_at}</div>
+          <div>${dep.destination}</div>
+
           <div class="status">${effectiveStatus}</div>
         `;
+
+        const status = block.getElementsByClassName('status').item(0);
+        if (status.innerHTML === 'Exp 18:15' || status.innerHTML === 'Cancelled') {
+          status.classList.replace('status','delayedStatus');
+        }
         board.appendChild(block);
       });
     }
