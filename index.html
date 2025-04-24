@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hack Glasgow - Train Departure Board</title>
+  <style>
+body {
+overflow:hidden;
+}
+
+/* Glitchy Text - Start */
+
+/* The "clip" in ".glitch" is depreciated, so technically you should use the "clip-path" that's in ".glitchy" instead, however IE doesn't support "clip-path", and most browsers still support "clip". */
+
+.glitch {
+  color: orange;
+  position: relative;
+}
+.glitch::before {
+  content: attr(data-text);
+  width: calc(100% + 0.5em);
+  position: absolute;
+  left: -9px;
+  text-shadow: 1px 0 blue;
+  top: -5px;
+  color: #FFD;
+  background: #111;
+  overflow: hidden;
+  clip: rect(0, 900px, 0, 0);
+  animation: noise-anim-2 3s infinite linear alternate-reverse;
+  -webkit-animation: noise-anim-2 3s infinite linear alternate-reverse;
+}
+.glitch::after {
+  content: attr(data-text);
+  width: calc(100% + 0.5em);
+  position: absolute;
+  left: -5px;
+  text-shadow: -1px 0 red;
+  top: -5px;
+  color: #DFF;
+  background: #111;
+  overflow: hidden;
+  clip: rect(0, 900px, 0, 0);
+  animation: noise-anim 2s infinite linear alternate-reverse;
+  -webkit-animation: noise-anim 2s infinite linear alternate-reverse;
+}
+@keyframes noise-anim {
+  0% {
+    clip: rect(80px, 9999px, 16px, 0);
+  }
+  5% {
+    clip: rect(94px, 9999px, 17px, 0);
+  }
+  10% {
+    clip: rect(9px, 9999px, 92px, 0);
+  }
+  15.0% {
+    clip: rect(37px, 9999px, 4px, 0);
+  }
+  20% {
+    clip: rect(53px, 9999px, 47px, 0);
+  }
+  25% {
+    clip: rect(99px, 9999px, 69px, 0);
+  }
+  30.0% {
+    clip: rect(15px, 9999px, 49px, 0);
+  }
+  35% {
+    clip: rect(83px, 9999px, 81px, 0);
+  }
+  40% {
+    clip: rect(55px, 9999px, 43px, 0);
+  }
+  45% {
+    clip: rect(28px, 9999px, 27px, 0);
+  }
+  50% {
+    clip: rect(64px, 9999px, 28px, 0);
+  }
+  55.0% {
+    clip: rect(76px, 9999px, 91px, 0);
+  }
+  60.0% {
+    clip: rect(29px, 9999px, 72px, 0);
+  }
+  65% {
+    clip: rect(70px, 9999px, 10px, 0);
+  }
+  70% {
+    clip: rect(5px, 9999px, 84px, 0);
+  }
+  75% {
+    clip: rect(46px, 9999px, 81px, 0);
+  }
+  80% {
+    clip: rect(7px, 9999px, 85px, 0);
+  }
+  85.0% {
+    clip: rect(17px, 9999px, 89px, 0);
+  }
+  90% {
+    clip: rect(41px, 9999px, 59px, 0);
+  }
+  95% {
+    clip: rect(53px, 9999px, 90px, 0);
+  }
+  100% {
+    clip: rect(10px, 9999px, 30px, 0);
+  }
+}
+@keyframes noise-anim-2 {
+  0% {
+    clip: rect(84px, 9999px, 3px, 0);
+  }
+  5% {
+    clip: rect(31px, 9999px, 69px, 0);
+  }
+  10% {
+    clip: rect(37px, 9999px, 33px, 0);
+  }
+  15.0% {
+    clip: rect(18px, 9999px, 6px, 0);
+  }
+  20% {
+    clip: rect(25px, 9999px, 87px, 0);
+  }
+  25% {
+    clip: rect(100px, 9999px, 8px, 0);
+  }
+  30.0% {
+    clip: rect(24px, 9999px, 87px, 0);
+  }
+  35% {
+    clip: rect(39px, 9999px, 16px, 0);
+  }
+  40% {
+    clip: rect(96px, 9999px, 25px, 0);
+  }
+  45% {
+    clip: rect(16px, 9999px, 100px, 0);
+  }
+  50% {
+    clip: rect(92px, 9999px, 76px, 0);
+  }
+  55.0% {
+    clip: rect(29px, 9999px, 40px, 0);
+  }
+  60.0% {
+    clip: rect(40px, 9999px, 39px, 0);
+  }
+  65% {
+    clip: rect(94px, 9999px, 44px, 0);
+  }
+  70% {
+    clip: rect(2px, 9999px, 78px, 0);
+  }
+  75% {
+    clip: rect(86px, 9999px, 50px, 0);
+  }
+  80% {
+    clip: rect(2px, 9999px, 46px, 0);
+  }
+  85.0% {
+    clip: rect(41px, 9999px, 71px, 0);
+  }
+  90% {
+    clip: rect(75px, 9999px, 15px, 0);
+  }
+  95% {
+    clip: rect(41px, 9999px, 8px, 0);
+  }
+  100% {
+    clip: rect(23px, 9999px, 75px, 0);
+  }
+}
+
+.glitchy {
+  color: orange;
+  position: relative;
+  font-size: 4em;
+}
+.glitchy::before {
+  content: attr(data-text);
+  width: calc(100% + 0.5em);
+  position: absolute;
+  left: -9px;
+  text-shadow: 1px 0 blue;
+  top: -5px;
+  color: orange;
+  background: #000;
+  overflow: hidden;
+  clip-path: polygon(0 0);
+  animation: noise-animY-2 3s infinite linear alternate-reverse;
+  -webkit-animation: noise-animY-2 3s infinite linear alternate-reverse;
+}
+.glitchy::after {
+  content: attr(data-text);
+  width: calc(100% + 0.5em);
+  position: absolute;
+  left: -5px;
+  text-shadow: -1px 0 red;
+  top: -5px;
+  color: orange;
+  background: #000;
+  overflow: hidden;
+  clip-path: polygon(0 0);
+  animation: noise-animY 2s infinite linear alternate-reverse;
+  -webkit-animation: noise-animY 2s infinite linear alternate-reverse;
+}
+@keyframes noise-animY {
+  0% {
+    clip-path: polygon(0 80px, 100% 80px, 100% 16px, 0 16px);
+  }
+  5% {
+    clip-path: polygon(0 94px, 100% 94px, 100% 17px, 0 17px);
+  }
+  10% {
+    clip-path: polygon(0 9px, 100% 9px, 100% 92px, 0 92px);
+  }
+  15.0% {
+    clip-path: polygon(0 37px, 100% 37px, 100% 4px, 0 4px);
+  }
+  20% {
+    clip-path: polygon(0 53px, 100% 53px, 100% 47px, 0 47px);
+  }
+  25% {
+    clip-path: polygon(0 99px, 100% 99px, 100% 69px, 0 69px);
+  }
+  30.0% {
+    clip-path: polygon(0 15px, 100% 15px, 100% 49px, 0 49px);
+  }
+  35% {
+    clip-path: polygon(0 83px, 100% 83px, 100% 81px, 0 81px);
+  }
+  40% {
+    clip-path: polygon(0 55px, 100% 55px, 100% 43px, 0 43px);
+  }
+  45% {
+    clip-path: polygon(0 28px, 100% 28px, 100% 27px, 0 27px);
+  }
+  50% {
+    clip-path: polygon(0 64px, 100% 64px, 100% 28px, 0 28px);
+  }
+  55.0% {
+    clip-path: polygon(0 76px, 100% 76px, 100% 91px, 0 91px);
+  }
+  60.0% {
+    clip-path: polygon(0 29px, 100% 29px, 100% 72px, 0 72px);
+  }
+  65% {
+    clip-path: polygon(0 70px, 100% 70px, 100% 10px, 0 10px);
+  }
+  70% {
+    clip-path: polygon(0 5px, 100% 5px, 100% 84px, 0 84px);
+  }
+  75% {
+    clip-path: polygon(0 46px, 100% 46px, 100% 81px, 0 81px);
+  }
+  80% {
+    clip-path: polygon(0 7px, 100% 7px, 100% 85px, 0 85px);
+  }
+  85.0% {
+    clip-path: polygon(0 17px, 100% 17px, 100% 89px, 0 89px);
+  }
+  90% {
+    clip-path: polygon(0 41px, 100% 41px, 100% 59px, 0 59px);
+  }
+  95% {
+    clip-path: polygon(0 53px, 100% 53px, 100% 90px, 0 90px);
+  }
+  100% {
+    clip-path: polygon(0 10px, 100% 10px, 100% 30px, 0 30px);
+  }
+}
+@keyframes noise-animY-2 {
+  0% {
+    clip-path: polygon(0 84px, 100% 84px, 100% 3px, 0 3px);
+  }
+  5% {
+    clip-path: polygon(0 31px, 100% 31px, 100% 69px, 0 69px);
+  }
+  10% {
+    clip-path: polygon(0 37px, 100% 37px, 100% 33px, 0 33px);
+  }
+  15.0% {
+    clip-path: polygon(0 18px, 100% 18px, 100% 6px, 0 6px);
+  }
+  20% {
+    clip-path: polygon(0 25px, 100% 25px, 100% 87px, 0 87px);
+  }
+  25% {
+    clip-path: polygon(0 100px, 100% 100px, 100% 8px, 0 8px);
+  }
+  30.0% {
+    clip-path: polygon(0 24px, 100% 24px, 100% 87px, 0 87px);
+  }
+  35% {
+    clip-path: polygon(0 39px, 100% 39px, 100% 16px, 0 16px);
+  }
+  40% {
+    clip-path: polygon(0 96px, 100% 96px, 100% 25px, 0 25px);
+  }
+  45% {
+    clip-path: polygon(0 16px, 100% 16px, 100% 100px, 0 100px);
+  }
+  50% {
+    clip-path: polygon(0 92px, 100% 92px, 100% 76px, 0 76px);
+  }
+  55.0% {
+    clip-path: polygon(0 29px, 100% 29px, 100% 40px, 0 40px);
+  }
+  60.0% {
+    clip-path: polygon(0 40px, 100% 40px, 100% 39px, 0 39px);
+  }
+  65% {
+    clip-path: polygon(0 94px, 100% 94px, 100% 44px, 0 44px);
+  }
+  70% {
+    clip-path: polygon(0 2px, 100% 2px, 100% 78px, 0 78px);
+  }
+  75% {
+    clip-path: polygon(0 86px, 100% 86px, 100% 50px, 0 50px);
+  }
+  80% {
+    clip-path: polygon(0 2px, 100% 2px, 100% 46px, 0 46px);
+  }
+  85.0% {
+    clip-path: polygon(0 41px, 100% 41px, 100% 71px, 0 71px);
+  }
+  90% {
+    clip-path: polygon(0 75px, 100% 75px, 100% 15px, 0 15px);
+  }
+  95% {
+    clip-path: polygon(0 41px, 100% 41px, 100% 8px, 0 8px);
+  }
+  100% {
+    clip-path: polygon(0 23px, 100% 23px, 100% 75px, 0 75px);
+  }
+}
+/* Glitchy Text - End */
+
+    @font-face {
+      font-family: 'DotMatrix';
+      src: url(DOTMATRI.ttf) format('truetype');
+    }
+
+    body {
+      background-color: black;
+      color: orange;
+      font-family: 'DotMatrix', monospace;
+      padding: 20px;
+    }
+
+    h1 {
+      color: orange;
+      border-bottom: 2px solid orange;
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+      transition: transform 0.3s ease-in-out;
+      font-size: 50px;
+      font-weight: normal;
+    }
+
+    #clock {
+      font-size: 2em;
+      text-align: right;
+      margin-bottom: 20px;
+    }
+
+    .board {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .block {
+      background-color: #111;
+      border: 2px solid orange;
+      padding: 20px;
+      width: 300px;
+      font-size: 1.2em;
+      margin-top: 20px;
+      margin-right: 10px;
+    }
+
+    .block.full-width {
+      width: 93.4%;
+    }
+
+    .block.half-width {
+      width: 45%;
+    }
+
+    .departure {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #111;
+      border: 2px solid orange;
+      padding: 15px 25px;
+      font-size: 1.5em;
+    }
+
+    .departure div {
+      flex: 1;
+      text-align: left;
+    }
+
+    .departure .status {
+      text-align: right;
+    }
+  </style>
+</head>
+<body>
+<span class="glitchy" data-text="Hack Glasgow">Glasgow Central Station</span>
+<hr style="background-color:orange; height:2px;border:none;">
+  <div id="clock"></div>
+  <div id="departureBoard" class="board"></div>
+
+  <script src="js-yaml.min.js"></script>
+  <script>
+    const yamlData = `
+trains:
+  - destination: Doors Open & Registration
+    time: "09:00"
+    platform: Central
+    status: On time
+    calling_at: "---"
+    duration: 45
+  - destination: Opening Remarks
+    time: "09:45"
+    platform: Central
+    status: On time
+    calling_at: "---"
+    duration: 15
+  - destination: Hacking things with AI stuff
+    time: "10:00"
+    platform: 1
+    status: On time
+    calling_at: "Cary Hendricks"
+    duration: 60
+  - destination: Why Did the Company Get Defrauded? BECause...
+    time: "10:00"
+    platform: 2
+    status: On time
+    calling_at: "Mark Saunders"
+    duration: 60
+  - destination: "LLMs Under Siege: Navigating Cybersecurity in Open-Source AI"
+    time: "11:00"
+    platform: 1
+    status: On time
+    calling_at: "Victor Onyenagubom"
+    duration: 30
+  - destination: A Dual Perspective on Cybercrime
+    time: "11:00"
+    platform: 2
+    status: On time
+    calling_at: "Calum Baird & James McGoldrick"
+    duration: 30
+  - destination: "Securing Values: The Ethics of Cyber Security"
+    time: "11:30"
+    platform: 1
+    status: On time
+    calling_at: "Michael Whitehead"
+    duration: 30
+  - destination: Enshittification of the Industry
+    time: "11:30"
+    platform: 2
+    status: On time
+    calling_at: "Rosie Anderson"
+    duration: 30
+  - destination: Lunch
+    time: "12:00"
+    platform: Central
+    status: On time
+    calling_at: "---"
+    duration: 60
+  - destination: How to get away with hacking
+    time: "13:00"
+    platform: 1
+    status: On time
+    calling_at: "Liam Follin"
+    duration: 60
+  - destination: Attacking AWS - From initial access to hardcore persistence
+    time: "13:00"
+    platform: 2
+    status: On time
+    calling_at: "Santi Abastante"
+    duration: 60
+  - destination: Getting started in bug bounty, from picking a program to getting your first report triaged
+    time: "14:00"
+    platform: 1
+    status: On time
+    calling_at: "Lennaert Oudshoorn"
+    duration: 30
+  - destination: "Forensic Acquisition of Soldered Storage Laptops (and others) Using Kali Linux"
+    time: "14:00"
+    platform: 2
+    status: On time
+    calling_at: "Calum Baird"
+    duration: 30
+  - destination: "Yelling at the people and/or the thinking sand isn't helping"
+    time: "14:30"
+    platform: 1
+    status: On time
+    calling_at: "maya boeckh"
+    duration: 30
+  - destination: "Terminal velocity: Common command-line controls and bypasses"
+    time: "14:30"
+    platform: 2
+    status: On time
+    calling_at: "Andrew Finlayson"
+    duration: 30
+  - destination: "Break"
+    time: "15:00"
+    platform: Central
+    status: On time
+    calling_at: "---"
+    duration: 30
+  - destination: "Blame the Parents"
+    time: "15:30"
+    platform: 1
+    status: On time
+    calling_at: "James Bore"
+    duration: 30
+  - destination: "Out of Service"
+    time: "15:30"
+    platform: 2
+    status: On time
+    calling_at: "Set-Up"
+    duration: 30
+  - destination: "Phishing Kits vs Financial Institutions - History, OSINT and Automation"
+    time: "16:00"
+    platform: 1
+    status: On time
+    calling_at: "Tom Blue & Alana Witten"
+    duration: 30
+  - destination: "Out of Service"
+    time: "16:00"
+    platform: 2
+    status: On time
+    calling_at: "Set-Up"
+    duration: 30
+  - destination: "Femtech and Data Privacy: What's at Stake?"
+    time: "16:30"
+    platform: 1
+    status: On time
+    calling_at: "Arohi Naik"
+    duration: 30
+  - destination: "Out of Service"
+    time: "16:30"
+    platform: 2
+    status: On time
+    calling_at: "Set-Up"
+    duration: 30
+  - destination: "Geopolitics, Climate Change & Cyber: Why Nation States Will Super Charge Espionage and Cyber Attacks"
+    time: "17:00"
+    platform: 1
+    status: On time
+    calling_at: "Ian Thornton-Trump"
+    duration: 60
+  - destination: "Out of Service"
+    time: "17:00"
+    platform: 2
+    status: On time
+    calling_at: "Set-Up"
+    duration: 60
+  - destination: "Closing Remarks"
+    time: "18:00"
+    platform: 1
+    status: On time
+    calling_at: "---"
+    duration: 15
+  - destination: "Afterparty"
+    time: "18:15"
+    platform: Central
+    status: On time
+    calling_at: "---"
+    duration: 345
+`;
+
+    function updateClock() {
+      const now = new Date();
+      const timeString = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+      document.getElementById('clock').textContent = `Current Time: ${timeString}`;
+    }
+
+    function renderBlocks(trains) {
+      const board = document.getElementById('departureBoard');
+      board.innerHTML = '';
+      const now = new Date();
+
+      trains.forEach(dep => {
+        const [hours, minutes] = dep.time.split(':').map(Number);
+        const depTime = new Date();
+        depTime.setHours(hours, minutes, 0, 0);
+        const diffMinutes = (now - depTime) / 60000;
+        if (diffMinutes > dep.duration && depTime < now) return;
+        const effectiveStatus = now >= depTime ? 'Arrived' : dep.status;
+
+        const block = document.createElement('div');
+        block.className = 'block';
+        if (dep.calling_at.trim() === '---') {
+          block.classList.add('full-width');
+        }
+        if (dep.calling_at.trim() !== '---') {
+          block.classList.add('half-width');
+        }
+
+        block.innerHTML = `
+          <div><strong>Time:</strong> ${dep.time}</div>
+          <div><strong>Talk:</strong> ${dep.destination}</div>
+          <div><strong>Platform:</strong> ${dep.platform}</div>
+          <div><strong>Speaker:</strong> ${dep.calling_at}</div>
+          <div class="status">${effectiveStatus}</div>
+        `;
+        board.appendChild(block);
+      });
+    }
+
+    function updateBoard() {
+      const data = jsyaml.load(yamlData);
+      updateClock();
+      renderBlocks(data.trains || []);
+    }
+
+    updateBoard();
+    setInterval(updateBoard, 10000);
+    toggleTitle();
+  </script>
+</body>
+</html>
